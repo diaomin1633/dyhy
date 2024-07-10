@@ -1,0 +1,129 @@
+gjCounter = 0
+
+function OnEvent(event, arg)
+    if (event == "MOUSE_BUTTON_RELEASED" and arg == 9) then
+        while true do
+            gj()
+            if not IsKeyLockOn("capslock") then
+                break
+            end
+        end
+    end
+end
+
+function gj()
+    PressAndReleaseKey("m")
+    Sleep(500)
+    an("w", 1500)
+    an("s", 200)
+    MoveMouseTo(24000, 60000)
+    Sleep(200)
+    PressMouseButton(1)
+    Sleep(600)
+    ReleaseMouseButton(1)
+    Sleep(5000)
+    run(2000)
+    an("e", 600)
+    an("d", 1500)
+    PressAndReleaseKey("c")
+    run(4100)
+    Sleep(500)
+    MoveMouseRelative(700, 0)
+    run(2600)
+
+    an("e", 600)
+    Sleep(100)
+    MoveMouseRelative(-500, 0)
+    Sleep(500)
+    PressAndReleaseMouseButton(5)
+    run(2000)
+    Sleep(100)
+    MoveMouseRelative(450, -100)
+    Sleep(300)
+    run(2250)
+    Sleep(300)
+    MoveMouseRelative(520, 100)
+    Sleep(300)
+    run(3100)
+    Sleep(300)
+    MoveMouseRelative(-550, -50)
+    PressAndReleaseKey("c")
+    Sleep(1200)
+    run(3500)
+    Sleep(1500)
+    MoveMouseRelative(-1100, 0)
+    Sleep(300)
+    run(5000)
+    PressAndReleaseKey("escape")
+    Sleep(100)
+    MoveMouseTo(4680, 20000)
+    Sleep(100)
+    PressAndReleaseMouseButton(1)
+    Sleep(100)
+    PressAndReleaseKey("spacebar")
+    Sleep(1000)
+
+    gjCounter = gjCounter + 1
+    if gjCounter >= 10 then
+        Sleep(1000)
+        clear()
+        gjCounter = 0
+    end
+end
+
+function run(t)
+    PressKey("w")
+    Sleep(10)
+    PressKey("lshift")
+    Sleep(t)
+    ReleaseKey("w")
+    ReleaseKey("lshift")
+end
+
+function an(key, time)
+    PressKey(key)
+    Sleep(time)
+    ReleaseKey(key)
+end
+
+function clear()
+    PressAndReleaseKey("b")
+    Sleep(500)
+    MoveMouseTo(8000, 24000)
+    Sleep(100)
+    PressAndReleaseMouseButton(1)
+    Sleep(1000)
+    an("lshift", 1200)
+    Sleep(100)
+    an("lctrl", 1200)
+    Sleep(100)
+    PressAndReleaseKey("spacebar")
+    Sleep(1000)
+    PressAndReleaseKey("escape")
+    Sleep(500)
+    MoveMouseTo(58739, 14400)
+    Sleep(100)
+    PressAndReleaseMouseButton(1)
+    Sleep(1000)
+    an("lshift", 1200)
+    Sleep(100)
+    an("lctrl", 1200)
+    Sleep(100)
+    PressAndReleaseKey("spacebar")
+    Sleep(500)
+
+    MoveMouseTo(28140, 25692)
+    Sleep(100)
+    PressAndReleaseMouseButton(1)
+    Sleep(1000)
+    an("lshift", 1200)
+    Sleep(100)
+    an("lctrl", 1200)
+    Sleep(100)
+    PressAndReleaseKey("spacebar")
+    Sleep(1000)
+    PressAndReleaseKey("escape")
+    Sleep(1000)
+    PressAndReleaseKey("escape")
+    Sleep(3000)
+end
