@@ -1,9 +1,12 @@
+--全局计数器，无需理会
 gjCounter = 0
 
 function OnEvent(event, arg)
+    --该行的9代表启动按键，可根据自己鼠标侧键编号酌情更换
     if (event == "MOUSE_BUTTON_RELEASED" and arg == 9) then
         while true do
             gj()
+            --该行代表检测大写键处于熄灭状态时停止脚本
             if not IsKeyLockOn("capslock") then
                 break
             end
@@ -11,30 +14,44 @@ function OnEvent(event, arg)
     end
 end
 
+
+--主要挂机函数
 function gj()
+    --按下m键打开地图
     PressAndReleaseKey("m")
+    --Sleep代表延迟
     Sleep(500)
+    --an是我自己封装的函数，前面参数代表键位，后面参数代表长按该键位的时间的毫秒数
     an("w", 1500)
     an("s", 200)
+    --MoveMouseTo代表移动鼠标到屏幕的这个坐标
     MoveMouseTo(24000, 60000)
     Sleep(200)
+    --PressMouseButton是按下鼠标键位，1是鼠标左键
     PressMouseButton(1)
+    --按下600毫秒后，ReleaseMouseButton是松开鼠标左键
     Sleep(600)
     ReleaseMouseButton(1)
     Sleep(5000)
+    --run也是我自己封装的函数，代表w和shift同时按下，及奔跑2000毫秒，注意需要使用保持奔跑，使用切换奔跑可能导致距离不够
     run(2000)
     an("e", 600)
     an("d", 1500)
+    --PressAndReleaseKey是按下并松开键盘键位，我的设置是按下邦妮的2技能，可根据自己使用习惯更改为自己键位即可
     PressAndReleaseKey("c")
     run(4100)
     Sleep(500)
+    --MoveMouseRelative代表鼠标向该坐标方向移动，视角不对可自己调试该参数
     MoveMouseRelative(700, 0)
     run(2600)
 
+
+    --下面这段是按e开启任务之后的操作，转视角以及奔跑，可自己酌情调试
     an("e", 600)
     Sleep(100)
     MoveMouseRelative(-500, 0)
     Sleep(500)
+    --按下鼠标侧键5，及邦妮的3技能，可更换为自己的按键，如果使用的是键盘键位更换为PressAndReleaseKey("键位")这个函数，              键位中填自己的3技能键位
     PressAndReleaseMouseButton(5)
     run(2000)
     Sleep(100)
@@ -47,6 +64,7 @@ function gj()
     run(3100)
     Sleep(300)
     MoveMouseRelative(-550, -50)
+    --停止2技能，可更改为自己使用的键位
     PressAndReleaseKey("c")
     Sleep(1200)
     run(3500)
@@ -63,6 +81,8 @@ function gj()
     PressAndReleaseKey("spacebar")
     Sleep(1000)
 
+
+    --这是函数的计数器，每次执行完之后+1，10次之后执行clear函数，及清理背包操作gjCounter >= 10，10可根据自身情况酌情调整
     gjCounter = gjCounter + 1
     if gjCounter >= 10 then
         Sleep(1000)
@@ -71,6 +91,7 @@ function gj()
     end
 end
 
+--封装的跑步函数,无需理会
 function run(t)
     PressKey("w")
     Sleep(10)
@@ -80,12 +101,15 @@ function run(t)
     ReleaseKey("lshift")
 end
 
+--封装的长按键位函数，无需理会
 function an(key, time)
     PressKey(key)
     Sleep(time)
     ReleaseKey(key)
 end
 
+
+--封装的清理背包函数，可根据自己键位更改下面的“b”键位
 function clear()
     PressAndReleaseKey("b")
     Sleep(500)
